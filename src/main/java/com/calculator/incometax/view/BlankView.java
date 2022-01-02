@@ -5,7 +5,7 @@ import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Route;
 
-@Route(value="", layout = MenuBar.class)
+@Route(value="blank", layout = MenuBar.class)
 public class BlankView extends VerticalLayout implements BeforeEnterObserver {
 	
 	/**
@@ -15,6 +15,6 @@ public class BlankView extends VerticalLayout implements BeforeEnterObserver {
 
 	@Override
     public void beforeEnter(BeforeEnterEvent event) {
-        event.rerouteTo(HomeView.class);
+//        event.rerouteTo(DashboardView.class);
     }
 }

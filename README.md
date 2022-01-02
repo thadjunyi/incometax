@@ -1,3 +1,3 @@
 # incometax
 
-Income Tax Calculator using Vaadin Spring
+Income Tax Calculator using Spring Vaadin.

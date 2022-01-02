@@ -10,20 +10,20 @@ import com.vaadin.flow.router.Route;
 @Route(value="dashboard", layout = MenuBar.class)
 //@RouteAlias(value="", layout = MenuBar.class)
 @PageTitle("Dashboard")
-public class HomeView extends VerticalLayout {
+public class DashboardView extends VerticalLayout {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5386437084703158053L;
 
-	public HomeView() {
+	public DashboardView() {
 		createText();
 		createNotification();
 	}
 	
 	public void createText() {
-		H1 text = new H1("Hello");
+		H1 text = new H1("Welcome!");
 		text.addClassNames("text-l", "m-m");
 		
 		setDefaultHorizontalComponentAlignment(Alignment.CENTER);

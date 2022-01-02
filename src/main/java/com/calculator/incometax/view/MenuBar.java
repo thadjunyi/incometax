@@ -1,8 +1,13 @@
 package com.calculator.incometax.view;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.calculator.incometax.security.SecurityService;
+import com.calculator.incometax.utils.ComponentUtils;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
@@ -14,13 +19,16 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.ParentLayout;
 import com.vaadin.flow.router.RouterLink;
 
-@ParentLayout(MainLayout.class)
+@ParentLayout(MainView.class)
 public class MenuBar extends AppLayout {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5374780662715594766L;
+	
+	@Autowired
+	SecurityService securityService;
 	
 	public MenuBar() {
 		createHeader();
@@ -36,26 +44,31 @@ public class MenuBar extends AppLayout {
 		.set("font-size", "var(--lumo-font-size-l)")
 		.set("margin", "0");
 
+		Button logoutButton = ComponentUtils.createButton("Log out", null, e -> securityService.logout());
+		logoutButton.setWidth("100px");
+		
         HorizontalLayout header = new HorizontalLayout(
           new DrawerToggle(),
-          title
+          title,
+          logoutButton
         );
+        
+        header.expand(title);
 
         header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER); 
         header.setWidth("100%");
         header.addClassNames("py-0", "px-m");
 
-        addToNavbar(header); 
-
+        addToNavbar(header);
     }
 	
 	private void createDrawer() {
 		Tabs tabs = new Tabs();
 		
 		tabs.add(
-	      createTab(VaadinIcon.DASHBOARD, "Dashboard", HomeView.class),
-	      createTab(VaadinIcon.CALC, "Calculator", MainView.class),
-	      createTab(VaadinIcon.LINK, "Reference Link", LinkView.class)
+		      createTab(VaadinIcon.DASHBOARD, "Dashboard", DashboardView.class),
+		      createTab(VaadinIcon.CALC, "Calculator", CalculatorView.class),
+		      createTab(VaadinIcon.LINK, "Reference Link", LinkView.class)
 	    );
 	    tabs.setOrientation(Tabs.Orientation.VERTICAL);
 	

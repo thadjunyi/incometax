@@ -91,7 +91,8 @@
     "@vaadin/virtual-list": "22.0.2",
     "construct-style-sheets-polyfill": "3.0.4",
     "date-fns": "2.23.0",
-    "lit": "2.0.0"
+    "lit": "2.0.0",
+    "lumo-css-framework": "^4.0.10"
   },
   "devDependencies": {
     "@vaadin/application-theme-plugin": "./target/plugins/application-theme-plugin",
@@ -209,7 +210,8 @@
       "@vaadin/virtual-list": "22.0.2",
       "construct-style-sheets-polyfill": "3.0.4",
       "date-fns": "2.23.0",
-      "lit": "2.0.0"
+      "lit": "2.0.0",
+      "lumo-css-framework": "^4.0.10"
     },
     "devDependencies": {
       "chokidar": "^3.5.0",
@@ -233,6 +235,6 @@
       "workbox-precaching": "6.4.2",
       "workbox-webpack-plugin": "6.4.2"
     },
-    "hash": "349a53cb7f311df9fad03e6420f634c936fa33aa74e3b87745d05ffce01697b4"
+    "hash": "0fe3b7d64100c875282dbf40b5739588e49c1c34668ac0d7ea84f286d924cbc1"
   }
 }

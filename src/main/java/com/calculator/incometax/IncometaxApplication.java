@@ -5,16 +5,22 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 import com.calculator.incometax.model.Donation;
 import com.calculator.incometax.model.SRS;
 import com.calculator.incometax.model.Tax;
+import com.calculator.incometax.properties.LoginProperties;
 import com.calculator.incometax.repository.DonationRepository;
 import com.calculator.incometax.repository.SRSRepository;
 import com.calculator.incometax.repository.TaxRepository;
+import com.vaadin.flow.component.dependency.NpmPackage;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = ErrorMvcAutoConfiguration.class)
+@EnableConfigurationProperties(LoginProperties.class)
+@NpmPackage(value = "lumo-css-framework", version = "^4.0.10")
 public class IncometaxApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(IncometaxApplication.class);
