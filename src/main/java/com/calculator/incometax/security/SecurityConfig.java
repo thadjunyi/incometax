@@ -14,6 +14,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import com.calculator.incometax.cache.RequestCache;
 import com.calculator.incometax.properties.LoginProperties;
+import com.calculator.incometax.properties.UrlProperties;
 
 
 @EnableWebSecurity
@@ -22,12 +23,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	LoginProperties loginProperties;
-
-	private static final String LOGIN_PROCESSING_URL = "/v1/incometax/vaadin/login";
-	private static final String LOGIN_FAILURE_URL = "/v1/incometax/vaadin/login?error";
-	private static final String LOGIN_URL = "/v1/incometax/vaadin/login";
-	private static final String LOGIN_SUCCESS_URL = "/v1/incometax/vaadin/dashboard";
-	private static final String LOGOUT_SUCCESS_URL = "/v1/incometax/vaadin/login";
+	
+	@Autowired
+	UrlProperties urlProperties;
 	
 	/**
 	 * Require login to access internal pages and configure login form.
@@ -53,13 +51,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	    // Configure the login page.
 	    .and().formLogin()
-	    .loginPage(LOGIN_URL)
-	    .loginProcessingUrl(LOGIN_PROCESSING_URL)
-	    .defaultSuccessUrl(LOGIN_SUCCESS_URL)
-	    .failureUrl(LOGIN_FAILURE_URL)
+	    .loginPage(urlProperties.getLogin())
+	    .loginProcessingUrl(urlProperties.getLoginProcessing())
+	    .defaultSuccessUrl(urlProperties.getLoginSuccess())
+	    .failureUrl(urlProperties.getLoginFailure())
 	
 	    // Configure logout
-	    .and().logout().logoutSuccessUrl(LOGOUT_SUCCESS_URL);
+	    .and().logout().logoutSuccessUrl(urlProperties.getLogoutSuccess());
 	}
 	
 	@Bean

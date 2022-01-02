@@ -13,13 +13,14 @@ import com.calculator.incometax.model.Donation;
 import com.calculator.incometax.model.SRS;
 import com.calculator.incometax.model.Tax;
 import com.calculator.incometax.properties.LoginProperties;
+import com.calculator.incometax.properties.UrlProperties;
 import com.calculator.incometax.repository.DonationRepository;
 import com.calculator.incometax.repository.SRSRepository;
 import com.calculator.incometax.repository.TaxRepository;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 @SpringBootApplication(exclude = ErrorMvcAutoConfiguration.class)
-@EnableConfigurationProperties(LoginProperties.class)
+@EnableConfigurationProperties({LoginProperties.class, UrlProperties.class})
 @NpmPackage(value = "lumo-css-framework", version = "^4.0.10")
 public class IncometaxApplication {
 

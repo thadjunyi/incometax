@@ -93,6 +93,9 @@
 	<profiles>
 		<profile>   
             <id>production</id>
+            <properties>
+	            <vaadin.productionMode>true</vaadin.productionMode>
+	        </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -108,12 +111,24 @@
                             </execution>
                         </executions>
                         <configuration>
-                             <productionMode>true</productionMode>
-                            <pnpmEnable>false</pnpmEnable>
+                        	<vaadin.productionMode>true</vaadin.productionMode>
+                            <vaadin.pnpmEnable>false</vaadin.pnpmEnable>
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
+            <dependencies>
+	            <dependency>
+	                <groupId>com.vaadin</groupId>
+	                <artifactId>vaadin</artifactId>
+	                <exclusions>
+	                    <exclusion>
+	                        <groupId>com.vaadin</groupId>
+	                        <artifactId>vaadin-dev-server</artifactId>
+	                    </exclusion>
+	                </exclusions>
+	            </dependency>
+	        </dependencies>
 		</profile>
 	</profiles>
 </project>
